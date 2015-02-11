@@ -1,0 +1,71 @@
+<html>
+
+<head>
+  <script src="js/controller.js"></script>
+  <link href="css/jquery-ui-1.8.18.custom.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="js/vis/vis.css" rel="stylesheet" type="text/css">
+  <script> src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" </script>
+  <script> src="js/jquery-ui-1.8.18.custom.min.js" </script>
+  <script> src="js/vis/vis.js" </script>  
+</head>
+
+<body>
+
+  <div id="{{ username }}" class:"hackyhack"></div>
+
+  <div id="universe">
+    <div id="controls">
+
+      <div class="formelem">
+        <select id="videodropdown">
+          {% for vid in videos %}
+              <option value="{{ vidserver }}/{{ vid }}">{{ vid }}</option>
+          {% endfor %}
+        </select>
+
+        <select id="playbackdropdown">
+              <option value="0.5">0.5x</option>
+              <option value="1">1x</option>
+              <option value="2">2x</option>
+        </select>
+
+        <select id="gesturedropdown">
+          {% for ges in gestures %}
+              <option value="{{ ges }}">{{ ges }}</option>
+          {% endfor %}
+        </select>
+
+      </div>
+    </div>
+
+    <div id="vidcontainer">
+        <div id="vidpane" class:"anno_element">
+        
+        </div>
+
+        <div id="timeline" class:"anno_element">
+            
+        </div>
+
+        <div id="instructions_cont" class:"anno_element">
+              <p id="instructions_header" class:"instructions_line">"Controls:"</p>
+              <p class:"instructions_line">"Spacebar = play/pause"</p>
+              <p class:"instructions_line">"Mouse-left double = create new event"</p>
+              <p class:"instructions_line">"Mouse-right single = select existing event"</p>
+              <p class:"instructions_line">"Mouse-middle up/down = zoom in/out of timeline"</p>
+              <p class:"instructions_line">"Mouse-left = set current time"</p>
+              <p class:"instructions_line">"Q/W = forwards/backwards in time"</p>
+              <p class:"instructions_line">"D = goto selected event start/end"</p>
+              <p class:"instructions_line">"F = play until end of selected event"</p>
+        </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+
+</html>
+
