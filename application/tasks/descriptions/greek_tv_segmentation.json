@@ -1,0 +1,47 @@
+{ "task_defs":
+  [
+	{
+	  "task_name": "greek_tv_segmentation",
+	  "data_source_name": "greek_tv",
+	  "task_details": 
+	  	{
+	  		"type": "segmentation",
+	  		"events": ["smile","frown","nod","shake"]
+	  		
+  		},
+	  "video_list": [
+	    "1.avi",
+	    "2.avi",
+	    "3.avi"
+	  ]
+	},
+	{
+	  "task_name": "test_segmentation",
+	  "data_source_name": "test",
+	  "task_details": 
+	  	{
+	  		"type": "segmentation",
+	  		"events": ["smile","frown","nod","shake"]
+	  		
+  		},
+	  "video_list": [
+	    "1.mp4",
+	    "2.mp4"
+	  ]
+	},
+	{
+	  "task_name": "greek_tv_conan",
+	  "data_source_name": "greek_tv",
+	  "task_details": 
+	  	{
+	  		"type":"continuous_annotation",
+	  		"variables": ["valence","arousal"]
+  		},
+	  "video_list": [
+	    "1.avi",
+	    "2.avi",
+	    "3.avi"
+	  ]
+	}
+  ]
+}

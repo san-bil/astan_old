@@ -1,0 +1,8 @@
+{
+  "users": [
+    {
+    	"email":"sanjay@bil.com",
+    	"tasks":["greek_tv_segmentation", "greek_tv_conan"]
+    }
+  ]
+}
