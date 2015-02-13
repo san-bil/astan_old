@@ -1,0 +1,27 @@
+body, h1, div { font-family:arial;}
+
+body { padding:20px;}
+
+#content { width:640px; }
+
+#instructions_cont { width: auto; margin-top: 20px; margin-left:40px; display:inline-block;}
+#instructions_line { width: auto;}
+.instructions_header { text-decoration: underline}
+
+
+
+#vidcontainer { height: 770; }
+#vidpane { float: left;   }
+#timeline { width: auto; margin-left: 100px; margin-top: 200px; }
+#timeline_spacer { width: 20px }
+
+
+div.formelem { padding:10px;}
+
+#buttonArea { width:100%; text-align:center; margin-top:20px; }
+
+.prop { margin-bottom: 20px}
+.propLabel { margin-bottom:5px; font-weight: bold; text-align:center; width: 100% }
+
+.anno_element { display: inline }
+p { margin:0 }
