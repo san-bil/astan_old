@@ -3,12 +3,25 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.security import Security, SQLAlchemyUserDatastore
 import os  
 import json
+from flask_mail import Mail
+from utils.decrypt_string import decrypt_string
 
 # Create the app and configuration
 # Read the configuration file
 app = Flask(__name__)
 app.config.from_object('application.default_settings')
 app.config.from_envvar('PRODUCTION_SETTINGS', silent=True)
+
+
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = 'astan.annotation.app'
+hashed_password = open('application/private_settings/hashed_email_password.txt').read()
+#substring removes the null terminator that read() appends
+mail_password = decrypt_string(hashed_password[0:-1])
+app.config['MAIL_PASSWORD'] = mail_password
+mail = Mail(app)
 
 # Connect to database with sqlalchemy.
 db = SQLAlchemy(app)
