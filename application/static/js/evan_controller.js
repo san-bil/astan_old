@@ -38,6 +38,16 @@ function get_video_time(){
   return $("video").get(0).currentTime;
 }
 
+function is_video_paused(){
+  return (($("video").get(0).paused))
+}
+
+function get_taskname(){
+  var task_name = $("div[id^=tasknamehack_]").attr('id').substring(("tasknamehack_".length));
+  return task_name;
+}
+
+
 function get_subject(){
   var subject = $("div[id^=subjecthack_]").attr('id').substring(("subjecthack_".length));
   return subject;
@@ -48,8 +58,13 @@ function get_video_selection(){
   return videoName;
 }
 
-function get_annotations_endpoint(subject, videoName){
-  var annotations_fetch_endpoint = "/fetch_annos/?subject=" + subject + "&video=" + videoName
+function get_annotations_fetch_endpoint(subject, videoName, task_name){
+  var annotations_fetch_endpoint = "/fetch_json_annos?subject=" + subject + "&video=" + videoName +"&task_name=" + task_name
+  return annotations_fetch_endpoint
+}
+
+function get_annotations_push_endpoint(subject, videoName, task_name){
+  var annotations_fetch_endpoint = "/push_json_annos?subject=" + subject + "&video=" + videoName +"&task_name=" + task_name
   return annotations_fetch_endpoint
 }
 
@@ -154,9 +169,7 @@ function get_timeline_options(vid_length_msec){
   return tl_options;
 }
 
-function is_video_paused(){
-  return (($("video").get(0).paused))
-}
+
 
 function right_click_set_time(my_event){
 
@@ -221,34 +234,41 @@ function create_new_dataset_from_JSON(annotations){
 
   var new_dataset = new vis.DataSet(annotations.annos);
   var subject = get_subject();
+  var task_name = get_taskname();
 
   new_dataset.on('*', function(event, properties) {
-    var tosend;
-    tosend = {
+    var tosend = {
+      "video": annotations.video,
       "annos": new_dataset.get({
         fields: ['content','end','start','id', 'date'],
         type: {
           start: 'ISODate', 
           end: 'ISODate'       
         }                 
-      }),
-      "video": annotations.video
+      })
     };
 
-    
-    console.log(tosend);
+    console.log(tosend)
+
+    var push_url = get_annotations_push_endpoint(subject, annotations.video, task_name )
 
     outbound_request = $.ajax({
       type: 'post',
-      url: 'save_value?subject=' + subject,
-      data: {
-        buffer: tosend
-      }
+      url: push_url,
+      contentType: 'application/json',
+      data: JSON.stringify(tosend),
+      dataType:'json'
     });
 
-    outbound_request.fail(function( jqXHR, textStatus ) {
-      alert("Server is down. Stop annotating for now. Email the admin to ask what's wrong. Press Ctrl+Shift+J in chrome and attach a screenshot.");
-      console.log(jqXHR);
+    outbound_request.fail(function( jqXHR, textStatus, errorThrown ) {
+      console.log(errorThrown);
+
+      if(jqXHR.status==200){
+
+      }else{
+        alert("Server is down. Stop annotating for now. Email the admin to ask what's wrong. Press Ctrl+Shift+J in chrome and attach a screenshot.");
+        
+      }
     });
 
   });
@@ -338,7 +358,8 @@ function set_up_annotation_state(){
     var vid_length_msec = get_video_duration();
     var subject = get_subject();
     var videoName = get_video_selection();
-    var annotations_fetch_endpoint = get_annotations_endpoint(subject, videoName);
+    var task_name = get_taskname();
+    var annotations_fetch_endpoint = get_annotations_fetch_endpoint(subject, videoName, task_name);
 
     var annotations = fetch_annotations(annotations_fetch_endpoint);
 
@@ -355,7 +376,7 @@ $(function(){ /* DOM ready */
 
 
   function change_video() {
-    func_logger()
+
     var vidpane = $("#vidpane")
     var vid_path = $( "#videodropdown" ).val()
     $("video").remove()
