@@ -74,13 +74,15 @@ function get_gesture_selection(){
 }
 
 function def_key_combos(e, ui){
-    console.log()
+    console.log("key pressed")
     if(e.keyCode == 32 && (($("video").get(0).paused))){
       $("video").get(0).play()
       window.clearInterval(current_annotation_overrun_block);
+      e.preventDefault(); 
     } else if(e.keyCode == 32 && !((($("video").get(0).paused))) ) {
       $("video").get(0).pause()
       window.clearInterval(current_annotation_overrun_block);
+      e.preventDefault(); 
     } else if(e.keyCode == 113){
 
 
@@ -120,7 +122,8 @@ function def_key_combos(e, ui){
     }else if (e.keyCode == 102 && can_play_annotation && $("video").get(0).paused) {
       $("video").get(0).play();
       current_annotation_overrun_block = setInterval(function(){
-        if(get_video_time()>=current_event_end){
+        if(get_video_time()>=current_event_end+0.05){
+          console.log("overrun blocked!")
           $("video").get(0).pause();
           window.clearInterval(current_annotation_overrun_block);
         }      
@@ -353,7 +356,7 @@ function set_up_annotation_state(){
 
   if(new_video_flag==1){
     console.log("New video selected")
-    $(window).keypress(def_key_combos)
+    
 
     var vid_length_msec = get_video_duration();
     var subject = get_subject();
@@ -382,10 +385,9 @@ $(function(){ /* DOM ready */
     $("video").remove()
     if(!(timeline_obj==null)){
         timeline_obj.destroy();
-     //   console.log("destroying timeline")
     }
     
-
+    window.clearInterval(current_annotation_overrun_block);
     var video = $('<video width="600" height="600"></video>').attr("preload","auto").attr("controls","controls")
         .append('<source src="' + vid_path + '"/>')
         .appendTo($("#vidpane"));
@@ -395,13 +397,15 @@ $(function(){ /* DOM ready */
     new_video_flag=1;
     
     $("video").on("canplay",set_up_annotation_state);
-
     
   }
 
   
   $( "#videodropdown" ).change(change_video);
-  change_video()
+  change_video();
+  $(window).keypress(def_key_combos)
+
+
 
 
 
