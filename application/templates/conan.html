@@ -1,0 +1,85 @@
+<html>
+
+<head>
+  <script src="{{ url_for('static', filename='js/jquery-1.7.2.min.js') }}"> </script>
+  <script src="{{ url_for('static', filename='js/jquery-ui-1.8.18.custom.min.js') }}"> </script>
+  <script src="{{ url_for('static', filename='js/conan_controller.js') }}"></script>
+
+  <link href="{{ url_for('static', filename='css/jquery-ui-1.8.18.custom.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ url_for('static', filename='css/conan_style.css') }}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+  <div id="tasknamehack_{{ task_def['task_name'] }}" class:"hackyhack"></div>
+  <div id="subjecthack_{{ username }}" class:"hackyhack"></div>
+
+  <div id="universe">
+    <div id="controls">
+
+      <div class="formelem">
+        <select id="videodropdown">
+          {% for vid in task_def['video_list'] %}
+              <option value="//{{ task_def['data_uri'] }}/{{ vid }}">{{ vid }}</option>
+          {% endfor %}
+        </select>
+
+
+        <select id="variabledropdown">
+          {% for variable in task_def['task_details']['variables'] %}
+              <option value="{{ variable }}">{{ variable }}</option>
+          {% endfor %}
+        </select>
+
+      </div>
+    </div>
+
+    <div id="vidcontainer">
+        <div id="vidpane" class:"anno_element">
+
+        </div>
+
+        <div id="dimension"></div>
+
+        <div id="slider" class:"">
+            
+
+        </div>
+
+        <div id="labels">
+            <span class="left" style="margin-top:5px">Low</span>
+            <span class="right" style="margin-top:5px">High</span>
+        </div>
+    </div>
+
+
+
+  </div>
+
+  <div id="instructions_cont" class:"anno_element">
+    <p id="instructions_header" class:"instructions_header">Controls:</p>
+    <p class:"instructions_line">Click on slider handle = start playback+annotating</p>
+    <p class:"instructions_line">Click on grey box = stop playback+annotating</p>
+  </div>
+
+</body>
+
+
+</html>
+
+
+
+
+
+<script>
+  // subject = "sanjay_annemo_test_account"
+  // video = "http://146.169.15.13/greekTV/greekTV_all/P1_20111031_seq1.mp4"
+  // videoName = "P1_20111031_seq1.mp4"
+  // dimension = "arousal"
+</script>
+
+
+
+
+
+

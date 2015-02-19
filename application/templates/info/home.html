@@ -8,7 +8,10 @@
       	<p class="task_list_header">Tasks:</p>
       
     	{% for task in tasks %}
-    		<p class="task_list"><a href="/annotator/{{ task['task_name'] }}">{{ task['data_source_name'].replace('_',' ') }} - {{ task['task_details']['type'].replace('_',' ') }}</a></p>
+    		<p class="task_list">
+    			<a href="/annotator/{{ task['task_name'] }}">{{ task['task_name'].replace('_',' ') }}</a>
+    			<span>({{ task['data_source_name'].replace('_',' ') }}, {{ task['task_details']['type'].replace('_',' ') }})</span>
+    		</p>
     	{% endfor %}
 
     </div>

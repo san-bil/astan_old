@@ -3,7 +3,10 @@
     <div class="span8 offset2">
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-
+          {% if username|length > 1 %}
+            <li><a href="/home">{{ username }}</a></li>
+            <li><a href="/logout">Logout</a></li>
+          {% endif %}
         </ul>
         <h3 class="muted">*An</h3>
       </div> <!-- masthead -->
