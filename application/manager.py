@@ -1,5 +1,5 @@
 from application import app
-from flask import render_template
+from flask import render_template, redirect
 from application.models import *
 from flask.ext.security import login_required
 import flask_security.core
@@ -11,6 +11,7 @@ from application import task_defs
 from flask import request
 import os
 import json
+import datetime
 
 @app.route('/')
 @app.route('/index/')
@@ -26,8 +27,6 @@ def home():
     user = flask.ext.login.current_user
     tasks = get_user_tasks(user)
     relevant_task_defs = find_relevant_tasks(tasks)
-    print relevant_task_defs
-    return render_template('info/home.html', title='Flask-Bootstrap', tasks=relevant_task_defs)
 
 
 @app.route('/annotator/<task_name>')
@@ -105,6 +104,12 @@ def find_relevant_tasks(task_list):
         tmp_task_objs = find_relevant_tasks_helper(task_name)
         task_objs += tmp_task_objs
     return task_objs
+
+def ensure_dir(f):
+#    d = os.path.dirname(f)
+    if not os.path.exists(f):
+        os.makedirs(f)
+
 
 
 # 404 page not found "route"
