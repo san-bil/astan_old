@@ -5,9 +5,7 @@ from flask.ext.security import login_required
 import flask_security.core
 from flask import request
 import flask.ext.login
-from application import db
-from application import usermaps
-from application import task_defs
+from application import db, usermaps, task_defs
 from flask import request
 import os
 import json

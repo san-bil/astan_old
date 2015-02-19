@@ -1,5 +1,5 @@
 import os
-
+from utils.decrypt_string import decrypt_string
 # Get application base dir.
 _basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -20,11 +20,21 @@ SECURITY_EMAIL_SENDER = "*An"
 SECURITY_PASSWORD_HASH = 'bcrypt'
 SECURITY_PASSWORD_SALT = 'team_astana'
 
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 465
+MAIL_USE_SSL = True
+MAIL_USERNAME = 'astan.annotation.app'
+hashed_password = open('application/private_settings/hashed_email_password.txt').read()
+#substring removes the null terminator that read() appends
+mail_passwd = decrypt_string(hashed_password[0:-1])
+MAIL_PASSWORD = mail_passwd
+
+
+
 TASK_DESCS_URI = os.path.join(_basedir, 'tasks/descriptions')
-
 USERMAPS = os.path.join(_basedir, 'tasks/usermaps')
-
 DATA_SOURCE_URIS = os.path.join(_basedir, 'tasks/data_source_uris.json')
-
 DATA_SINK = os.path.join(_basedir, 'data')
+
+
 
