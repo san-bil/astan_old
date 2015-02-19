@@ -15,10 +15,12 @@ import datetime
 
 @app.route('/')
 @app.route('/index/')
-@login_required
 def index():
     user = flask.ext.login.current_user
-    return render_template('info/landing.html', title='Flask-Bootstrap')
+    if user.is_authenticated():
+        return redirect("/home", code=302)
+    else:
+        return render_template('info/landing.html', title='Flask-Bootstrap')
 
 
 @app.route('/home')
@@ -27,6 +29,8 @@ def home():
     user = flask.ext.login.current_user
     tasks = get_user_tasks(user)
     relevant_task_defs = find_relevant_tasks(tasks)
+    
+    return render_template('info/home.html', title='*An', tasks=relevant_task_defs, username=user.email)
 
 
 @app.route('/annotator/<task_name>')
@@ -37,7 +41,7 @@ def annotator(task_name):
     task_details = task_def['task_details']
     task_type = task_details['type']
 
-    task_to_template_map = {"segmentation":"evan.html", "conan":"conan.html"}
+    task_to_template_map = {"segmentation":"evan.html", "continuous_annotation":"conan.html"}
 
     template_name = task_to_template_map[task_type]
     user = flask.ext.login.current_user
