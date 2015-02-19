@@ -41,20 +41,24 @@ def create_user():
 	if not os.path.isfile(db_file_uri):
 		print "making new db"
 		db.create_all()
-		user_datastore.create_user(email='sanjay@bil.com', password='password')
+		user_datastore.create_user(email='test@test.com', password='test')
 		db.session.commit()
 
 
 def get_task_defs():
 	task_defs_obj = read_all_json_configs(app.config['TASK_DESCS_URI'])
-	task_defs_list = task_defs_obj[0]["task_defs"]
+	task_defs_list_lol = [ task_defs_obj[k]["task_defs"] for k in range(0, len(task_defs_obj))]
+	task_defs_list = [y for x in task_defs_list_lol for y in x]
+
 	data_uris = get_data_uris()
 	updated_task_defs_list = join_tasks_with_uris(task_defs_list, data_uris)
 	return updated_task_defs_list
 	
 def get_usermaps():
 	tmp = read_all_json_configs(app.config['USERMAPS'])
-	return tmp[0]["users"]
+	tmp1 = [ tmp[k]["users"] for k in range(0, len(tmp))]
+	users_list = [y for x in tmp1 for y in x]
+	return users_list
 
 def get_data_uris():
 	with open (app.config['DATA_SOURCE_URIS']) as tmpfile:
