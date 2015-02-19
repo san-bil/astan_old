@@ -1,12 +1,12 @@
 { "task_defs":
   [
 	{
-	  "task_name": "greek_tv_segmentation_block_1",
+	  "task_name": "greek_tv_conan",
 	  "data_source_name": "greek_tv",
 	  "task_details": 
 	  	{
-	  		"type": "segmentation",
-	  		"events": ["smile","frown","nod","shake"]
+	  		"type":"continuous_annotation",
+	  		"variables": ["valence","arousal"]
   		},
 	  "video_list": [
 		"P1_20111031_seq1.mp4",
@@ -78,18 +78,7 @@
 		"P1_20120507_seq3.mp4",
 		"P1_20120507_seq4.mp4",
 		"P1_20120507_seq5.mp4",
-		"P1_20120514_seq1.mp4"
-	  ]
-	},
-	{
-	  "task_name": "greek_tv_segmentation_block_2",
-	  "data_source_name": "greek_tv",
-	  "task_details": 
-	  	{
-	  		"type": "segmentation",
-	  		"events": ["smile","frown","nod","shake"]
-  		},
-	  "video_list": [
+		"P1_20120514_seq1.mp4",
 		"P1_20120514_seq2.mp4",
 		"P1_20120514_seq3.mp4",
 		"P1_20120514_seq4.mp4",
@@ -159,19 +148,8 @@
 		"P2_20120319_seq3.mp4",
 		"P2_20120319_seq4.mp4",
 		"P2_20120319_seq5.mp4",
-		"P2_20120326_seq1.mp4"
-	  ]
-	},
-	{
-	  "task_name": "greek_tv_segmentation_block_3",
-	  "data_source_name": "greek_tv",
-	  "task_details": 
-	  	{
-	  		"type": "segmentation",
-	  		"events": ["smile","frown","nod","shake"]
-  		},
-	  "video_list": [
-	  	"P2_20120326_seq2.mp4",
+		"P2_20120326_seq1.mp4",
+		"P2_20120326_seq2.mp4",
 		"P2_20120326_seq3.mp4",
 		"P2_20120423_seq10.mp4",
 		"P2_20120423_seq11.mp4",
@@ -235,3 +213,4 @@
 	}
   ]
 }
+

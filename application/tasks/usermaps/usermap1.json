@@ -1,8 +1,24 @@
 {
   "users": [
     {
-    	"email":"sanjay@bil.com",
-    	"tasks":["greek_tv_segmentation", "greek_tv_conan"]
+    	"email":"sb1006@imperial.ac.uk",
+    	"tasks":[
+    		"greek_tv_segmentation_block_1",
+    		"greek_tv_segmentation_block_2",
+    		"greek_tv_segmentation_block_3", 
+    		"greek_tv_conan", 
+    		"teresa_conan",
+    		"mhi_mimicry_conan"
+    	]
+    },
+    {
+    	"email":"slavyan.gradev13@imperial.ac.uk",
+    	"tasks":[
+    		"greek_tv_segmentation_block_1",
+    		"greek_tv_conan",
+    		"teresa_conan"
+    	]
     }
   ]
 }
+
