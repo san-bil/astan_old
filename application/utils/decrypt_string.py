@@ -17,7 +17,7 @@ def decrypt_string(input_str):
     ciphertext = input_str
     
     decryptor = AES.new(key, mode, IV=IV)
-    plaintext = decryptor.decrypt(ciphertext)
+    plaintext = decryptor.decrypt(ciphertext).replace("\0","")
     return plaintext
 
 
