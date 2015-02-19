@@ -1,5 +1,5 @@
 {
-	"greek_tv":"146.169.15.13:11000/videos/greek_tv/2p/greekTV_all",
-	"mhi_mimicry":"146.169.15.13:11000/videos/mhi_mimicry",
-	"teresa_data":"146.169.15.13:11000/videos/teresa"
+	"greek_tv":"146.169.15.13:8000/videos/greek_tv/2p/greekTV_all",
+	"mhi_mimicry":"146.169.15.13:8000/videos/mhi_mimicry",
+	"teresa_data":"146.169.15.13:8000/videos/teresa"
 }
