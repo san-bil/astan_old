@@ -50,54 +50,112 @@ def annotator(task_name):
 
 
 
+
+
+
+
+
+
+
+
 @app.route('/fetch_json_annos')
 @login_required
 def fetch_json_annos():
     subj = request.args.get('subject')
     videoname = request.args.get('video')
-    annos_obj = read_json_annos(subj, videoname)
+    task_name = request.args.get('task_name')
+    annos_obj = read_json_annos(subj, videoname, task_name)
     return annos_obj
  
-def read_json_annos(subj, videoname):
+def read_json_annos(subj, videoname, task_name):
     data_sink = app.config['DATA_SINK']
-
-    subj_results_dir = os.path.join(data_sink,subj)
-    os.mkdir(subj_results_dir)
+    subj_results_dir = os.path.join(data_sink,task_name,subj)
+    ensure_dir(subj_results_dir)
     results_file_name = os.path.join(subj_results_dir,videoname+".json")
     if os.path.isfile(results_file_name):
-        with open (app.config['DATA_SOURCE_URIS']) as tmpfile:
+        with open (results_file_name) as tmpfile:
             annos_obj=json.loads(tmpfile.read())
             if not annos_obj.get("annos"):
                 annos_obj["annos"]=[]
     else:
         annos_obj = {"video": videoname, "annos":[]}
-    return annos_obj
+    print json.dumps(annos_obj)
+    return json.dumps(annos_obj)
 
 
 @app.route('/push_json_annos', methods=['POST'])
 @login_required
 def push_json_annos():
     subj = request.args.get('subject')
-    videoname = request.args.get('video')
-    videoname = request.args.get('buffer')
-    write_json_annos(subj, videoname)
+    task_name = request.args.get('task_name')
+    my_buffer = request.get_json()
+    videoname = my_buffer['video']
+    write_json_annos(subj, videoname, task_name, my_buffer)
     return "Done"
 
 
-def write_json_annos(subj, obj, videoname):
+def write_json_annos(subj, videoname, task_name, obj):
     data_sink = app.config['DATA_SINK']
-    subj_results_dir = os.path.join(data_sink,subj)
-    os.mkdir(subj_results_dir)
+    subj_results_dir = os.path.join(data_sink, task_name, subj)
+    ensure_dir(subj_results_dir)
     results_file_name = os.path.join(subj_results_dir,videoname+".json")
     with open(results_file_name, 'w') as outfile:
         json.dump(obj, outfile)
 
 
+
+
+
+
+
+
+
+@app.route('/push_csv_annos', methods=['POST'])
+@login_required
+def push_csv_annos():
+    subj = request.args.get('subject')
+    task_name = request.args.get('task_name')
+
+    chunk = ""
+    tmp=request.get_json();
+    mybuffer=tmp["buffer"]
+    for obj in mybuffer:
+        formattedDate = datetime.datetime.now().strftime("\"%A, %B %d, %Y, %I:%M:%S %p\"")
+        chunk_p1 = chunk + formattedDate + ','
+        chunk_p2 = chunk_p1 + ','.join([ str(obj[k]) for k in obj.viewkeys()]) + "\n"
+        chunk = chunk_p2
+        videoname=obj['video']
+        dimension=obj['dimension']
+    write_csv_chunk(subj,videoname,dimension, task_name, chunk)
+
+    return "success"
+
+def write_csv_chunk(subj, videoname, dimension, task_name, csv):
+    data_sink = app.config['DATA_SINK']
+    subj_results_dir = os.path.join(data_sink,task_name, subj)
+    ensure_dir(subj_results_dir)
+
+    results_file_name = os.path.join(subj_results_dir,videoname + '-' + dimension + ".csv")
+    with open(results_file_name, 'a') as outfile:
+        outfile.write(csv)
+
+    outfile.close()
+
+
+
+
+
+
 def get_user_tasks(user):
     for usermap in usermaps:
         if usermap["email"] == user.email:
-            return usermap["tasks"]
-
+            task_list = usermap["tasks"]
+            if task_list is None:
+                return []
+            else:
+                return task_list
+    return []
+    
 def find_relevant_tasks_helper(task_name):
     tmp_task_objs = [ t for t in task_defs if t["task_name"] == task_name ]
     return tmp_task_objs
