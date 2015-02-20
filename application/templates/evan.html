@@ -19,7 +19,7 @@
   <div id="universe">
     <div id="controls">
 
-      <div class="formelem">
+      <div class="formelem" class="styled-select">
         <select id="videodropdown">
           {% for vid in task_def['video_list'] %}
               <option value="//{{ task_def['data_uri'] }}/{{ vid }}">{{ vid }}</option>
