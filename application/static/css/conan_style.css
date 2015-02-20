@@ -53,7 +53,7 @@ div.formelem { padding:10px;}
 
 #saveBut { font-size:1.5em; margin-top:20px; }
 
-#instructions_cont { width: auto;background: #FF9999;display:inline-block;border: 2px solid;border-radius: 3px;-webkit-appearance: none; padding:5px;}
+#instructions_cont { width: auto;background:#CCE6FF ;display:inline-block;border: 2px solid;border-radius: 3px;-webkit-appearance: none; padding:5px;}
 #instructions_line { width: auto;}
 #instructions_header { text-decoration: underline}
 p { margin:0 }
@@ -62,7 +62,7 @@ p { margin:0 }
 
 
 select {
-   background: #CCE6FF;
+   background: #FF9999;
    padding: 5px;
    font-size: 14px;
    line-height: 1;

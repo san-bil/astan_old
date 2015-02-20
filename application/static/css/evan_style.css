@@ -4,7 +4,7 @@ body { padding:20px;}
 
 #content { width:640px; }
 
-#instructions_cont { width: auto; margin-top: 20px; margin-left:40px; display:inline-block; background: #FF9999;border: 2px solid;border-radius: 3px;-webkit-appearance: none;padding:5px;}
+#instructions_cont { width: auto; margin-top: 20px; margin-left:40px; display:inline-block; background: #CCE6FF;border: 2px solid;border-radius: 3px;-webkit-appearance: none;padding:5px;}
 #instructions_line { width: auto;}
 .instructions_header { text-decoration: underline}
 
@@ -28,7 +28,7 @@ p { margin:0 }
 
 
 select {
-   background: #CCE6FF;
+   background: #FF9999;
    padding: 5px;
    font-size: 14px;
    line-height: 1;
