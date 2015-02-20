@@ -27,7 +27,7 @@ def home():
     user = flask.ext.login.current_user
     tasks = get_user_tasks(user)
     relevant_task_defs = find_relevant_tasks(tasks)
-    
+    print user.email + " : /home"
     return render_template('info/home.html', title='*An', tasks=relevant_task_defs, username=user.email)
 
 
@@ -40,6 +40,8 @@ def annotator(task_name):
     task_type = task_details['type']
 
     task_to_template_map = {"segmentation":"evan.html", "continuous_annotation":"conan.html"}
+    user = flask.ext.login.current_user
+    print user.email + " : /annotator/"+task_name
 
     template_name = task_to_template_map[task_type]
     user = flask.ext.login.current_user
@@ -63,6 +65,10 @@ def fetch_json_annos():
     videoname = request.args.get('video')
     task_name = request.args.get('task_name')
     annos_obj = read_json_annos(subj, videoname, task_name)
+
+    user = flask.ext.login.current_user
+    print user.email + " : /fetch_json_annos : "+task_name+", "+videoname
+
     return annos_obj
  
 def read_json_annos(subj, videoname, task_name):
@@ -88,6 +94,10 @@ def push_json_annos():
     task_name = request.args.get('task_name')
     my_buffer = request.get_json()
     videoname = my_buffer['video']
+
+    user = flask.ext.login.current_user
+    print user.email + " : /fetch_json_annos : "+task_name+", "+videoname
+
     write_json_annos(subj, videoname, task_name, my_buffer)
     return "Done"
 
@@ -125,6 +135,9 @@ def push_csv_annos():
         videoname=obj['video']
         dimension=obj['dimension']
     write_csv_chunk(subj,videoname,dimension, task_name, chunk)
+
+    user = flask.ext.login.current_user
+    print user.email + " : /push_csv_annos : "+task_name+", "+videoname
 
     return "success"
 
