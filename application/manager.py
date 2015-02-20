@@ -83,7 +83,6 @@ def read_json_annos(subj, videoname, task_name):
                 annos_obj["annos"]=[]
     else:
         annos_obj = {"video": videoname, "annos":[]}
-    print json.dumps(annos_obj)
     return json.dumps(annos_obj)
 
 
