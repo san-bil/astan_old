@@ -4,13 +4,12 @@
 *An (pronounced AstAn) is a web-based tool for collecting video annotations.
 
 ~~~
-
 Requirements
 ---
 * Python 2.7 or 2.6
 * Sqlite
 * pip
-
+~~~
 Getting started
 ---
 
