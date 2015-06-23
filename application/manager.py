@@ -1,15 +1,15 @@
-from application import app
+from application import app, db, usermaps, task_defs
 from flask import render_template, redirect
 from application.models import *
 from flask.ext.security import login_required
 import flask_security.core
 from flask import request
 import flask.ext.login
-from application import db, usermaps, task_defs
 from flask import request
 import os
 import json
 import datetime
+
 
 @app.route('/')
 @app.route('/index/')
@@ -112,11 +112,6 @@ def write_json_annos(subj, videoname, task_name, obj):
 
 
 
-
-
-
-
-
 @app.route('/push_csv_annos', methods=['POST'])
 @login_required
 def push_csv_annos():
@@ -154,12 +149,17 @@ def write_csv_chunk(subj, videoname, dimension, task_name, csv):
 
 
 
-
+#for jnk in usermaps:
+#  print jnk["email"]
+#  print jnk["tasks"]
+#print "#"*20
 
 def get_user_tasks(user):
     for usermap in usermaps:
+ #       print usermap["email"]
+        task_list = usermap["tasks"]
+ #       print task_list
         if usermap["email"] == user.email:
-            task_list = usermap["tasks"]
             if task_list is None:
                 return []
             else:
