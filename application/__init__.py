@@ -51,6 +51,10 @@ def get_usermaps():
 	tmp = read_all_json_configs(app.config['USERMAPS'])
 	tmp1 = [ tmp[k]["users"] for k in range(0, len(tmp))]
 	users_list = [y for x in tmp1 for y in x]
+	for jnk in users_list:
+		print jnk["email"]
+ 		print jnk["tasks"]
+	print "-----------------------------"
 	return users_list
 
 def get_data_uris():
@@ -70,6 +74,7 @@ def read_all_json_configs(tmppath):
 	for root, directories, filenames in os.walk(tmppath):
 		for filename in filenames: 
 			with open (os.path.join(root,filename)) as tmpfile:
+				print tmpfile
 				tmpdata=json.loads(tmpfile.read())
 				all_configs.append(tmpdata)
 	return all_configs
