@@ -1,0 +1,40 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'jsonlint', '-g' ]
+info using npm@1.1.19
+info using node@v0.6.16
+verbose config file /home/sb1006/.npmrc
+verbose config file /usr/local/etc/npmrc
+verbose config file /usr/local/lib/node_modules/npm/npmrc
+verbose cache add [ 'jsonlint', null ]
+silly cache add: name, spec, args [ undefined, 'jsonlint', [ 'jsonlint', null ] ]
+verbose parsed url { pathname: 'jsonlint', path: 'jsonlint', href: 'jsonlint' }
+verbose addNamed [ 'jsonlint', '' ]
+verbose addNamed [ null, '' ]
+silly name, range, hasData [ 'jsonlint', '', false ]
+verbose raw, before any munging jsonlint
+verbose url resolving [ 'https://registry.npmjs.org/', './jsonlint' ]
+verbose url resolved https://registry.npmjs.org/jsonlint
+http GET https://registry.npmjs.org/jsonlint
+ERR! Error: SSL Error: CERT_UNTRUSTED
+ERR!     at ClientRequest.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/main.js:483:26)
+ERR!     at ClientRequest.emit (events.js:67:17)
+ERR!     at HTTPParser.onIncoming (http.js:1261:11)
+ERR!     at HTTPParser.onHeadersComplete (http.js:102:31)
+ERR!     at CleartextStream.ondata (http.js:1150:24)
+ERR!     at CleartextStream._push (tls.js:375:27)
+ERR!     at SecurePair.cycle (tls.js:734:20)
+ERR!     at EncryptedStream.write (tls.js:130:13)
+ERR!     at Socket.ondata (stream.js:38:26)
+ERR!     at Socket.emit (events.js:67:17)
+ERR! You may report this log at:
+ERR!     <http://github.com/isaacs/npm/issues>
+ERR! or email it to:
+ERR!     <npm-@googlegroups.com>
+ERR! 
+ERR! System Linux 3.13.0-32-generic
+ERR! command "node" "/usr/local/bin/npm" "install" "jsonlint" "-g"
+ERR! cwd /srv/ast_an
+ERR! node -v v0.6.16
+ERR! npm -v 1.1.19
+ERR! message SSL Error: CERT_UNTRUSTED
+verbose exit [ 1, true ]

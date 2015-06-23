@@ -9,10 +9,7 @@
                 "greek_tv_conan",
                 "teresa_conan",
                 "mahnob_laughter_conan",
-                "mimicry_ordinal_agreement",
-                "mhi_mimicry_conan",
-                "mahnob_laughter_events",
-                "mimicry_discrete_events"
+                "mhi_mimicry_conan"
             ]
         },
         {
@@ -22,9 +19,7 @@
                 "greek_tv_segmentation_block_2",
                 "greek_tv_segmentation_block_3",
                 "mahnob_laughter_conan",
-                "mahnob_laughter_events",
-                "greek_tv_conan",
-                "mimicry_discrete_events"
+                "greek_tv_conan"
             ]
         },
         {
@@ -45,8 +40,8 @@
         {
             "email": "n.rakicevic@imperial.ac.uk",
             "tasks": [
-                "mimicry_ordinal_agreement",
-                "mhi_mimicry_conan"
+                "mhi_mimicry_conan",
+                "mhi_mimicry_discrete_agreement"
             ]
         }
     ]
