@@ -169,7 +169,6 @@ function change_variable() {
 $(function(){
 
 
-
   $( "#videodropdown" ).change(change_video);
   change_video();
 

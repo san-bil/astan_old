@@ -404,7 +404,10 @@ $(function(){ /* DOM ready */
   $( "#videodropdown" ).change(change_video);
   change_video();
   $(window).keypress(def_key_combos)
-
+  
+ // $( "#videodropdown" ).change(setTimeout(function(){$( "#videodropdown" ).blur()},200));
+  //$( "#playbackdropdown" ).change(setTimeout(function(){$( "#playbackdropdown" ).blur()},200));
+  //$( "#gesturedropdown" ).change(setTimeout(function(){$( "#gesturedropdown" ).blur()},200));
 
 
 
