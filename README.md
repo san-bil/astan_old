@@ -27,10 +27,9 @@ $ pip install -r requirements.txt
 ~~~
 
 Start the server:
+~~~ sh
+$ python runserver.py
+~~~
 
 
 Open the browser; `http://localhost:5000`
-
-
-
-
