@@ -26,6 +26,7 @@ MAIL_USE_SSL = True
 MAIL_USERNAME = 'astan.annotation.app'
 hashed_password = open('application/private_settings/hashed_email_password.txt').read()
 #substring removes the null terminator that read() appends
+print "Enter encryption passphrase to unlock password for app email service."
 mail_passwd = decrypt_string(hashed_password[0:-1])
 MAIL_PASSWORD = mail_passwd
 

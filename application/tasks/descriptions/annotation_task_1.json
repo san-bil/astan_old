@@ -1,0 +1,18 @@
+{ "task_defs":
+  [
+	{
+	  "task_name": "annotation_task_1",
+	  "data_source_name": "task_1_videos",
+	  "task_details": 
+	  	{
+	  		"type":"continuous_annotation",
+	  		"variables": ["valence","arousal","agreement","conflict","dominance"]
+  		},
+	  "video_list": [
+		"1.mp4",
+		"2.mp4"
+	  ]
+	}
+  ]
+}
+

@@ -3,50 +3,15 @@
         {
             "email": "sb1006@imperial.ac.uk",
             "tasks": [
-                "greek_tv_segmentation_block_1",
-                "greek_tv_segmentation_block_2",
-                "greek_tv_segmentation_block_3",
-                "greek_tv_conan",
-                "teresa_conan",
-                "mahnob_laughter_conan",
-                "mimicry_ordinal_agreement",
-                "mhi_mimicry_conan",
-                "mahnob_laughter_events",
-                "mimicry_discrete_events"
+                "annotation_task_1",
+                "annotation_task_2",
+                "annotation_task_3"
             ]
         },
         {
-            "email": "slavyan.gradev13@imperial.ac.uk",
+            "email": "sanjay.bilakhia06@imperial.ac.uk",
             "tasks": [
-                "greek_tv_segmentation_block_1",
-                "greek_tv_segmentation_block_2",
-                "greek_tv_segmentation_block_3",
-                "mahnob_laughter_conan",
-                "mahnob_laughter_events",
-                "greek_tv_conan",
-                "mimicry_discrete_events"
-            ]
-        },
-        {
-            "email": "artem.kalikin13@imperial.ac.uk",
-            "tasks": [
-                "mhi_mimicry_conan",
-                "greek_tv_conan",
-                "teresa_conan"
-            ]
-        },
-        {
-            "email": "nicolas.trama-alvarez13@imperial.ac.uk",
-            "tasks": [
-                "mhi_mimicry_conan",
-                "greek_tv_conan"
-            ]
-        },
-        {
-            "email": "n.rakicevic@imperial.ac.uk",
-            "tasks": [
-                "mimicry_ordinal_agreement",
-                "mhi_mimicry_conan"
+                "annotation_task_1"
             ]
         }
     ]

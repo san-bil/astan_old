@@ -1,0 +1,30 @@
+{ "task_defs":
+  [
+	{
+	  "task_name": "annotation_task_2",
+	  "data_source_name": "task_2_videos",
+	  "task_details": 
+	  	{
+	  		"type": "segmentation",
+	  		"events": ["smile","frown","nod","shake"]
+  		},
+	  "video_list": [
+		"a.mp4",
+		"b.mp4"
+	  ]
+	},
+	{
+	  "task_name": "annotation_task_3",
+	  "data_source_name": "task_2_videos",
+	  "task_details": 
+	  	{
+	  		"type": "segmentation",
+	  		"events": ["interest_1","interest_2","interest_3","interest_4","interest_5"]
+  		},
+	  "video_list": [
+		"b.mp4",
+		"c.mp4"
+	  ]
+	}
+  ]
+}
