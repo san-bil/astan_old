@@ -22,6 +22,7 @@ $ git clone https://github.com/san-bil/astan.git
 Use the requirements.txt to start dependencies in your virtualenv:
 
 ~~~ sh
+$ apt-get install python-dev
 $ pip install -r requirements.txt
 ~~~
 
